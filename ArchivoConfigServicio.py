@@ -34,14 +34,16 @@ class ArchivoConfigServicio:
                         
                         lista_escritorios = Lista()
                         escritorios = puntos_atencion[contador_puntos_atencion][2]
+                        contador_escritorios = 0
                         for escritorio in escritorios:
                             codigo_escritorio = escritorio.get("id")
                             identificacion_escritorio = escritorio.find("identificacion").text
                             encargado_escritorio = escritorio.find("encargado").text
-                            nuevo_escritorio = EscritorioServicio(codigo_escritorio, identificacion_escritorio, encargado_escritorio)
+                            nuevo_escritorio = EscritorioServicio(contador_escritorios,codigo_escritorio, identificacion_escritorio, encargado_escritorio)
                             lista_escritorios.agregar_final(nuevo_escritorio)
+                            contador_escritorios += 1
                             
-                        nuevo_punto_atencion = PuntoAtencion(codigo_punto_atencion, nombre_punto_atencion, direccion_punto_atencion, lista_escritorios)
+                        nuevo_punto_atencion = PuntoAtencion(contador_puntos_atencion, codigo_punto_atencion, nombre_punto_atencion, direccion_punto_atencion, lista_escritorios)
                         lista_puntos_atencion.agregar_final(nuevo_punto_atencion)
                         contador_puntos_atencion += 1   
                         

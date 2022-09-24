@@ -1,7 +1,8 @@
 
 class PuntoAtencion: 
     
-    def __init__(self, codigo, nombre, direccion, escritorios):
+    def __init__(self, numero, codigo, nombre, direccion, escritorios):
+        self.numero = numero
         self.codigo = codigo
         self.nombre = nombre
         self.direccion = direccion

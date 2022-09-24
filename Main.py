@@ -61,8 +61,18 @@ class main():
                         if numero == empresa_seleccionada.dato.numero:
                             punto_atencion = empresa_seleccionada.dato.puntosAtencion.primero
                             for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
-                                print(punto_atencion.dato.codigo, punto_atencion.dato.nombre)
+                                print(punto_atencion.dato.numero, punto_atencion.dato.codigo, punto_atencion.dato.nombre)
                                 punto_atencion = punto_atencion.siguiente
+                            numero = int(input("Selecciona un número de punto de atención: "))
+                            punto_seleccionado = empresa_seleccionada.dato.puntosAtencion.primero
+                            for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
+                                if numero == punto_seleccionado.dato.numero:
+                                    escritorio = punto_seleccionado.dato.escritorios.primero
+                                    for i in range(punto_seleccionado.dato.escritorios.sizeOfList()):
+                                        print(escritorio.dato.numero, escritorio.dato.codigo, escritorio.dato.identificacion, escritorio.dato.encargado)
+                                        escritorio = escritorio.siguiente
+                                else:
+                                    punto_seleccionado = punto_seleccionado.siguiente    
                             break
                         else:
                             empresa_seleccionada = empresa_seleccionada.siguiente
