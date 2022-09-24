@@ -34,7 +34,7 @@
 		<nombre>Empresa 2</nombre>
 		<abreviatura>E2</abreviatura>
 		<listaPuntosAtencion>
-			<puntoAtencion id="PA1E2">
+			<puntoAtencion id="P1E2">
 				<nombre>Punto 1 E2</nombre>
 				<direccion>Guatemala</direccion>
 				<listaEscritorios>
@@ -49,6 +49,20 @@
 					<escritorio id="3E2">
 						<identificacion> escritorio 3 e2 </identificacion>
 						<encargado> Verónica Moreira </encargado>
+					</escritorio>
+				</listaEscritorios>
+			</puntoAtencion>
+			<puntoAtencion id="P2E2">
+				<nombre>Punto 2 E2</nombre>
+				<direccion>Guatemala</direccion>
+				<listaEscritorios>
+					<escritorio id="1E2">
+						<identificacion> escritorio 1 e2 </identificacion>
+						<encargado> Jimena Velasquez </encargado>
+					</escritorio>
+					<escritorio id="2E2">
+						<identificacion> escritorio 2 e2 </identificacion>
+						<encargado> Alessandra Velasquez </encargado>
 					</escritorio>
 				</listaEscritorios>
 			</puntoAtencion>
