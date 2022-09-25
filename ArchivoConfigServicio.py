@@ -71,3 +71,48 @@ class ArchivoConfigServicio:
             print("Error: ", err)
         finally:
             xml_file.close()
+            
+    def agregar_empresa_individual(self):
+        identificador_empresa = input("Ingrese el identificador de la empresa: ")
+        nombre_empresa = input("Ingrese el nombre de la empresa: ")
+        abreviatura_empresa = input("Ingrese la abreviatura de la empresa: ")
+        cantidad_puntos_atencion = int(input("Ingrese la cantidad de puntos de atención que tiene la empresa: "))
+        
+        #ingresando puntos de atencion
+        lista_puntos_atencion = Lista()
+        for i in range(cantidad_puntos_atencion):
+            print(f"Punto de atención no.{i+1}")
+            identificador_punto = input("Ingrese el id del punto de atención: ")
+            nombre_punto = input("Ingrese el nombre del punto de atención: ")
+            direccion_punto = input("Ingrese la dirección del punto de atención: ")
+            cantidad_escritorios = int(input("Ingrese la cantidad de escritorios de servicio con los que cuenta este de atención: "))
+            
+            #ingresando escritorios
+            lista_escritorios = Lista()
+            for j in range(cantidad_puntos_atencion):
+                print(f"Escritorio de servicio no.{j+1}")
+                identificador_escritorio = input("Ingrese el id del escritorio de servicio: ")
+                identificacion_escritorio = input("Ingrese la identificación/nombre del escritorio de servicio: ")
+                nombre_encargado = input("Ingrese el nombre del encargado del escritorio de servicio: ")
+                nuevo_escritorio = EscritorioServicio(j, identificador_escritorio, identificacion_escritorio, nombre_encargado)
+                lista_escritorios.agregar_final(nuevo_escritorio)
+                
+            nuevo_punto_atencion = PuntoAtencion(i, identificador_punto, nombre_punto, direccion_punto, lista_escritorios)
+            lista_puntos_atencion.agregar_final(nuevo_punto_atencion)
+            
+            #creando lista de transacciones
+            lista_transacciones = Lista()
+            cantidad_transacciones = int(input("Ingrese la cantidad de transacciones "))
+            for k in range(cantidad_transacciones):
+                print(f"Transacción no.{k+1}")
+                identificador_transaccion = input("Ingrese el id de la transaccion: ")
+                nombre_transaccion = input("Ingrese el nombre de la transaccion: ")
+                tiempo_transaccion = input("Ingrese el tiempo de atención de la transacción: ")
+                nueva_transaccion = Transaccion(k, identificador_transaccion, nombre_transaccion, tiempo_transaccion)
+                lista_transacciones.agregar_final(nueva_transaccion)
+                
+            nueva_empresa = Empresa(self.contador, identificador_empresa, nombre_empresa, abreviatura_empresa, lista_puntos_atencion, lista_transacciones)
+            self.listaEmpresas.agregar_final(nueva_empresa)
+            self.contador += 1  
+                        
+            

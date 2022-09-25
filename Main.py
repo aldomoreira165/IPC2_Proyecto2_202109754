@@ -50,7 +50,17 @@ class main():
                         archivo.agregar(ruta)
                     else:
                         archivo.agregar(ruta)
-                    
+                elif opcion == 3:
+                    self.clearConsole()
+                    if archivo == None: 
+                        archivo = ArchivoConfigServicio()
+                        archivo.agregar_empresa_individual()
+                        self.clearConsole()
+                        print("Empresa agregada correctamente.")
+                    else: 
+                        archivo.agregar_empresa_individual()
+                        print("Empresa agregada correctamente.")
+                        self.clearConsole()
             elif opcion == 2:
                 self.clearConsole()
                 if archivo == None:
