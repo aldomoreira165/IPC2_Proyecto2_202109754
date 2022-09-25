@@ -4,77 +4,33 @@
 		<nombre>Empresa 1</nombre>
 		<abreviatura>E1</abreviatura>
 		<listaPuntosAtencion>
-			<puntoAtencion id="PA1E1">
+			<puntoAtencion id="P1E1">
 				<nombre>Punto 1 E1</nombre>
 				<direccion>Guatemala</direccion>
 				<listaEscritorios>
-					<escritorio id="1E1">
-						<identificacion> escritorio 1 E1</identificacion>
+					<escritorio id="E1P1E1">
+						<identificacion>Escritorio 1 P1E1</identificacion>
 						<encargado> Juan Perez </encargado>
 					</escritorio>
-					<escritorio id="2E1">
-						<identificacion> escritorio 2 E1</identificacion>
+					<escritorio id="E1P1E1">
+						<identificacion>Escritorio 2 P1E1</identificacion>
 						<encargado> Juan Sosa </encargado>
 					</escritorio>
-					<escritorio id="3E2">
-						<identificacion> escritorio 3 E1</identificacion>
+					<escritorio id="E3P1E1">
+						<identificacion>Escritorio 3 E1</identificacion>
 						<encargado> Alexa Perez </encargado>
 					</escritorio>
 				</listaEscritorios>
 			</puntoAtencion>
 		</listaPuntosAtencion>
 		<listaTransacciones>
-			<transaccion id="1">
-				<nombre> transaccion 1 e1 </nombre>
+			<transaccion id="T1E1">
+				<nombre>Transaccion 1 E1 </nombre>
 				<tiempoAtencion> 50 </tiempoAtencion>
 			</transaccion>
-			<transaccion id="1500">
-				<nombre> transaccion 2 e1 </nombre>
+			<transaccion id="T2E2">
+				<nombre>Transaccion 2 E1</nombre>
 				<tiempoAtencion> 5 </tiempoAtencion>
-			</transaccion>
-		</listaTransacciones>
-	</empresa>
-	<empresa id="2">
-		<nombre>Empresa 2</nombre>
-		<abreviatura>E2</abreviatura>
-		<listaPuntosAtencion>
-			<puntoAtencion id="P1E2">
-				<nombre>Punto 1 E2</nombre>
-				<direccion>Guatemala</direccion>
-				<listaEscritorios>
-					<escritorio id="1E2">
-						<identificacion> escritorio 1 e2 </identificacion>
-						<encargado> Jimena Velasquez </encargado>
-					</escritorio>
-					<escritorio id="2E2">
-						<identificacion> escritorio 2 e2 </identificacion>
-						<encargado> Alessandra Velasquez </encargado>
-					</escritorio>
-					<escritorio id="3E2">
-						<identificacion> escritorio 3 e2 </identificacion>
-						<encargado> Verónica Moreira </encargado>
-					</escritorio>
-				</listaEscritorios>
-			</puntoAtencion>
-			<puntoAtencion id="P2E2">
-				<nombre>Punto 2 E2</nombre>
-				<direccion>Guatemala</direccion>
-				<listaEscritorios>
-					<escritorio id="1E2">
-						<identificacion> escritorio 1 e2 </identificacion>
-						<encargado> Jimena Velasquez </encargado>
-					</escritorio>
-					<escritorio id="2E2">
-						<identificacion> escritorio 2 e2 </identificacion>
-						<encargado> Alessandra Velasquez </encargado>
-					</escritorio>
-				</listaEscritorios>
-			</puntoAtencion>
-		</listaPuntosAtencion>
-		<listaTransacciones>
-			<transaccion id="1000">
-				<nombre> tra1 </nombre>
-				<tiempoAtencion> 100 </tiempoAtencion>
 			</transaccion>
 		</listaTransacciones>
 	</empresa>

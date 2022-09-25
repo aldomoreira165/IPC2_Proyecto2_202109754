@@ -68,26 +68,30 @@ class main():
                 else:
                     #imprimiendo lista dee empresas
                     empresa = archivo.listaEmpresas.primero
+                    print("Empresas en el sistema: ")
                     for i in range(archivo.listaEmpresas.sizeOfList()):
-                        print(empresa.dato.numero, empresa.dato.nombre)
+                        print(f"[{empresa.dato.numero}] Nombre: {empresa.dato.nombre}")
                         empresa = empresa.siguiente
                     
                     numero = int(input("Selecciona un número de empresa: "))
+                    self.clearConsole()
                     
                     empresa_seleccionada = archivo.listaEmpresas.primero
                     for i in range(archivo.listaEmpresas.sizeOfList()):
                         if numero == empresa_seleccionada.dato.numero:
                             punto_atencion = empresa_seleccionada.dato.puntosAtencion.primero
+                            print(f"Puntos de atención de la empresa '{empresa_seleccionada.dato.nombre}':")
                             for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
-                                print(punto_atencion.dato.numero, punto_atencion.dato.codigo, punto_atencion.dato.nombre)
+                                print(f"[{punto_atencion.dato.numero}] Código:{punto_atencion.dato.codigo} Nombre:{punto_atencion.dato.nombre}")
                                 punto_atencion = punto_atencion.siguiente
                             numero = int(input("Selecciona un número de punto de atención: "))
+                            self.clearConsole()
                             punto_seleccionado = empresa_seleccionada.dato.puntosAtencion.primero
                             for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
                                 if numero == punto_seleccionado.dato.numero:
                                     escritorio = punto_seleccionado.dato.escritorios.primero
                                     for i in range(punto_seleccionado.dato.escritorios.sizeOfList()):
-                                        print(escritorio.dato.numero, escritorio.dato.codigo, escritorio.dato.identificacion, escritorio.dato.encargado)
+                                        print(escritorio.dato.numero, escritorio.dato.codigo, escritorio.dato.identificacion, escritorio.dato.encargado, escritorio.dato.activo)
                                         escritorio = escritorio.siguiente
                                 else:
                                     punto_seleccionado = punto_seleccionado.siguiente    

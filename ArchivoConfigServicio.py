@@ -41,7 +41,7 @@ class ArchivoConfigServicio:
                             codigo_escritorio = escritorio.get("id")
                             identificacion_escritorio = escritorio.find("identificacion").text
                             encargado_escritorio = escritorio.find("encargado").text
-                            nuevo_escritorio = EscritorioServicio(contador_escritorios,codigo_escritorio, identificacion_escritorio, encargado_escritorio)
+                            nuevo_escritorio = EscritorioServicio(contador_escritorios,codigo_escritorio, identificacion_escritorio, encargado_escritorio, False)
                             lista_escritorios.agregar_final(nuevo_escritorio)
                             contador_escritorios += 1
                             
@@ -94,7 +94,7 @@ class ArchivoConfigServicio:
                 identificador_escritorio = input("Ingrese el id del escritorio de servicio: ")
                 identificacion_escritorio = input("Ingrese la identificación/nombre del escritorio de servicio: ")
                 nombre_encargado = input("Ingrese el nombre del encargado del escritorio de servicio: ")
-                nuevo_escritorio = EscritorioServicio(j, identificador_escritorio, identificacion_escritorio, nombre_encargado)
+                nuevo_escritorio = EscritorioServicio(j, identificador_escritorio, identificacion_escritorio, nombre_encargado, False)
                 lista_escritorios.agregar_final(nuevo_escritorio)
                 
             nuevo_punto_atencion = PuntoAtencion(i, identificador_punto, nombre_punto, direccion_punto, lista_escritorios)
