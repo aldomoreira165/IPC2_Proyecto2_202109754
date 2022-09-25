@@ -45,13 +45,11 @@ class main():
                 elif opcion == 2:
                     self.clearConsole()
                     ruta = input("Ingresa la ruta del archivo de configuración del sistema: ")
-                    if archivo == None: 
-                        print("metodo 1")        
+                    if archivo == None:        
                         archivo = ArchivoConfigServicio()
-                        archivo.agregar_archivo_inicial(ruta)
+                        archivo.agregar(ruta)
                     else:
-                        print("metodo 2")
-                        archivo.aumentar_prueba(ruta)
+                        archivo.agregar(ruta)
                     
             elif opcion == 2:
                 self.clearConsole()

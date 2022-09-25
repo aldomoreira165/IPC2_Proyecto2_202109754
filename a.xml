@@ -28,6 +28,10 @@
 				<nombre> transaccion 1 e1 </nombre>
 				<tiempoAtencion> 50 </tiempoAtencion>
 			</transaccion>
+			<transaccion id="1500">
+				<nombre> transaccion 2 e1 </nombre>
+				<tiempoAtencion> 5 </tiempoAtencion>
+			</transaccion>
 		</listaTransacciones>
 	</empresa>
 	<empresa id="2">
@@ -68,7 +72,7 @@
 			</puntoAtencion>
 		</listaPuntosAtencion>
 		<listaTransacciones>
-			<transaccion id="1">
+			<transaccion id="1000">
 				<nombre> tra1 </nombre>
 				<tiempoAtencion> 100 </tiempoAtencion>
 			</transaccion>
