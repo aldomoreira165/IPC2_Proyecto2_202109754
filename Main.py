@@ -36,13 +36,23 @@ class main():
                 self.clearConsole()
                 
                 if opcion == 1:
-                    pass
+                    self.clearConsole()
+                    if archivo == None:
+                        print("No hay ningún archivo cargado en el sistema.")
+                    else:  
+                        archivo = None
+                        print("Sistema limpiado con éxito.")
                 elif opcion == 2:
                     self.clearConsole()
                     ruta = input("Ingresa la ruta del archivo de configuración del sistema: ")
-                    archivo = ArchivoConfigServicio(ruta)
-                    archivo.agregarArchivo()
-                    self.clearConsole()
+                    if archivo == None: 
+                        print("metodo 1")        
+                        archivo = ArchivoConfigServicio()
+                        archivo.agregar_archivo_inicial(ruta)
+                    else:
+                        print("metodo 2")
+                        archivo.aumentar_prueba(ruta)
+                    
             elif opcion == 2:
                 self.clearConsole()
                 if archivo == None:
