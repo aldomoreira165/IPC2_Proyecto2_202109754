@@ -12,11 +12,15 @@
 						<identificacion>Escritorio 1 P1E1</identificacion>
 						<encargado> Juan Perez </encargado>
 					</escritorio>
-					<escritorio id="E1P1E1">
+					<escritorio id="E2P1E1">
 						<identificacion>Escritorio 2 P1E1</identificacion>
 						<encargado> Juan Sosa </encargado>
 					</escritorio>
 					<escritorio id="E3P1E1">
+						<identificacion>Escritorio 3 E1</identificacion>
+						<encargado> Alexa Perez </encargado>
+					</escritorio>
+					<escritorio id="E4P1E1">
 						<identificacion>Escritorio 3 E1</identificacion>
 						<encargado> Alexa Perez </encargado>
 					</escritorio>

@@ -10,7 +10,7 @@
                 <nombre> $nombreCliente <nombre/>
                 <listadoTransacciones>
                     <transaccion idTransaccion="$codTrans" cantidad="cantTrans"/>
-                    <transaccion idTransaccion="$codTrans" cantidad="cantTrans"/> ...
+                    <transaccion idTransaccion="$codTrans" cantidad="cantTrans"/>
                 <listadoTransacciones/>
             <cliente/>
         <listadoClientes/>
