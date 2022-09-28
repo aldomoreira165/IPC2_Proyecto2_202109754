@@ -4,10 +4,32 @@
         <escritoriosActivos>
             <escritorio idEscritorio="E1P1E1"/>
             <escritorio idEscritorio="E3P1E1"/>
+            <escritorio idEscritorio="E2P1E1"/>
         </escritoriosActivos>
         <listadoClientes>
             <cliente dpi="1515">
                 <nombre>Aldo Moreira</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T1E1" cantidad="100"/>
+                    <transaccion idTransaccion="T3E1" cantidad="50"/>
+                </listadoTransacciones>
+            </cliente>
+            <cliente dpi="15">
+                <nombre>Axel Moreira</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T2E1" cantidad="50"/>
+                    <transaccion idTransaccion="T4E1" cantidad="500"/>
+                </listadoTransacciones>
+            </cliente>
+        </listadoClientes>
+    </configInicial>
+    <configInicial id="2" idEmpresa="2" idPunto="P1E2">
+        <escritoriosActivos>
+            <escritorio idEscritorio="E1P1E2"/>
+        </escritoriosActivos>
+        <listadoClientes>
+            <cliente dpi="666">
+                <nombre>Diablo Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>
                     <transaccion idTransaccion="T2E2" cantidad="50"/>

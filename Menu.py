@@ -127,11 +127,40 @@ class Menu:
                 self.clearConsole()
                 
                 if opcion == 1:
-                    if self.punto_seleccionado == None:
-                        print("No ha seleccionado ningun punto de atención.")
+                    if self.archivop == None:
+                        print("No has ingresado ningún archivo de prueba.")
                     else:
-                        print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
-                
+                        if self.punto_seleccionado == None:
+                            print("No ha seleccionado ningun punto de atención.")
+                        else:
+                            contador_escritorios_activos = 0
+                            contador_escritorios_inactivos = 0
+                            cantidad_clientes_espera = self.punto_seleccionado.dato.clientes.sizeOfList()
+                            tiempo_promedio_espera = 0
+                            print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
+                            print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
+                            print("")
+                            escritorio = self.punto_seleccionado.dato.escritorios.primero
+                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                if escritorio.dato.activo == True:
+                                    contador_escritorios_activos += 1
+                                    escritorio = escritorio.siguiente
+                                else:
+                                    contador_escritorios_inactivos += 1
+                                    escritorio = escritorio.siguiente
+                                                        
+                            print(f"Cantidad de escritorios de servicio activos: {contador_escritorios_activos}")
+                            print(f"Cantidad de escritorios de servicio inactivos: {contador_escritorios_inactivos}")
+                            print(f"Cantidad de clientes en espera: {cantidad_clientes_espera}")
+                            
+                            cliente = self.punto_seleccionado.dato.clientes.primero
+                            for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                                print(cliente.dato.nombre)
+                                transaccion = cliente.dato.transacciones.primero
+                                for j in range(cliente.dato.transacciones.sizeOfList()):
+                                    print(transaccion.dato.codigo)
+                                    transaccion = transaccion.siguiente
+                                cliente = cliente.siguiente
                 
 
 

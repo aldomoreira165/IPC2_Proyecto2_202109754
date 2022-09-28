@@ -33,22 +33,22 @@ class ArchivoConfigPrueba:
                     contador_clientes = 0
                     lista_clientes = Lista()
                     clientela = xml_data[contador_configuraciones][1]
-                    
-                    #almacenando transacciones
-                    contador_transacciones = 0
-                    lista_transacciones = Lista()
-                    transacciones = clientela[contador_clientes][1]
-                    
-                    for transaccion in transacciones:
-                        id_transaccion = transaccion.get("idTransaccion")
-                        cantidad_transaccion = transaccion.get("cantidad")
-                        transaccion_cliente_nueva = TransaccionCliente(contador_transacciones, id_transaccion, cantidad_transaccion)
-                        lista_transacciones.agregar_final(transaccion_cliente_nueva)
-                        contador_transacciones += 1
-                        
+                                        
                     for cliente in clientela:
                         dpi_cliente = cliente.get("dpi")
                         nombre_cliente = cliente.find("nombre").text
+                        
+                        #almacenando transacciones
+                        contador_transacciones = 0
+                        lista_transacciones = Lista()
+                        transacciones = clientela[contador_clientes][1]
+                        for transaccion in transacciones:
+                            id_transaccion = transaccion.get("idTransaccion")
+                            cantidad_transaccion = transaccion.get("cantidad")
+                            transaccion_cliente_nueva = TransaccionCliente(contador_transacciones, id_transaccion, cantidad_transaccion)
+                            lista_transacciones.agregar_final(transaccion_cliente_nueva)
+                            contador_transacciones += 1
+                        
                         nuevo_cliente = Cliente(contador_clientes, dpi_cliente, nombre_cliente, lista_transacciones)
                         lista_clientes.agregar_final(nuevo_cliente)
                         contador_clientes += 1
