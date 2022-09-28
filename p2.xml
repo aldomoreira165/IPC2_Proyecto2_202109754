@@ -5,15 +5,14 @@
             <escritorio idEscritorio="E1P1E1"/>
             <escritorio idEscritorio="E3P1E1"/>
         </escritoriosActivos>
-    </configInicial>
-    <configInicial id="2" idEmpresa="2" idPunto="P1E2">
-        <escritoriosActivos>
-            <escritorio idEscritorio="E1P1E2"/>
-        </escritoriosActivos>
-    </configInicial> 
-    <configInicial id="3" idEmpresa="2" idPunto="P2E2">
-        <escritoriosActivos>
-            <escritorio idEscritorio="E2P2E2"/>
-        </escritoriosActivos>
-    </configInicial>   
+        <listadoClientes>
+            <cliente dpi="1515">
+                <nombre>Aldo Moreira</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T1E1" cantidad="100"/>
+                    <transaccion idTransaccion="T2E2" cantidad="50"/>
+                </listadoTransacciones>
+            </cliente>
+        </listadoClientes>
+    </configInicial>  
 </listadoInicial>

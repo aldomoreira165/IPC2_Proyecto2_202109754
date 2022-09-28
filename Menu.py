@@ -7,6 +7,8 @@ class Menu:
     def __init__ (self):
         self.archivo = None
         self.archivop = None
+        self.empresa_seleccionada = None
+        self.punto_seleccionado = None
         
     #funcion para limpiar consola
     def clearConsole(self):
@@ -88,28 +90,49 @@ class Menu:
                     numero = int(input("Selecciona un número de empresa: "))
                     self.clearConsole()
                     
-                    empresa_seleccionada = self.archivo.listaEmpresas.primero
+                    self.empresa_seleccionada = self.archivo.listaEmpresas.primero
                     for i in range(self.archivo.listaEmpresas.sizeOfList()):
-                        if numero == empresa_seleccionada.dato.numero:
-                            punto_atencion = empresa_seleccionada.dato.puntosAtencion.primero
-                            print(f"Puntos de atención de la empresa '{empresa_seleccionada.dato.nombre}':")
-                            for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
-                                print(f"[{punto_atencion.dato.numero}] Código:{punto_atencion.dato.codigo} Nombre:{punto_atencion.dato.nombre}")
-                                punto_atencion = punto_atencion.siguiente
-                            numero = int(input("Selecciona un número de punto de atención: "))
-                            self.clearConsole()
-                            punto_seleccionado = empresa_seleccionada.dato.puntosAtencion.primero
-                            for i in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
-                                if numero == punto_seleccionado.dato.numero:
-                                    escritorio = punto_seleccionado.dato.escritorios.primero
-                                    for i in range(punto_seleccionado.dato.escritorios.sizeOfList()):
-                                        print(escritorio.dato.numero, escritorio.dato.codigo, escritorio.dato.identificacion, escritorio.dato.encargado, escritorio.dato.activo)
-                                        escritorio = escritorio.siguiente
-                                else:
-                                    punto_seleccionado = punto_seleccionado.siguiente    
+                        if self.empresa_seleccionada.dato.numero == numero:
+                            break
+                    else:
+                        self.empresa_seleccionada = self.empresa_seleccionada.siguiente
+                        
+                    punto = self.empresa_seleccionada.dato.puntosAtencion.primero    
+                    print(f"Puntos de atención de la empresa '{self.empresa_seleccionada.dato.nombre}': ")
+                    for i in range(self.empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
+                        print(f"[{punto.dato.numero}] Nombre: {punto.dato.nombre}")
+                        punto = punto.siguiente
+                    
+                    numero = int(input("Selecciona un punto de atención: "))
+                    self.clearConsole()
+                        
+                    self.punto_seleccionado = self.empresa_seleccionada.dato.puntosAtencion.primero
+                    for j in range(self.empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
+                        if self.punto_seleccionado.dato.numero == numero:
+                            print("Punto de atención seleccionado correctamente.")
                             break
                         else:
-                            empresa_seleccionada = empresa_seleccionada.siguiente
+                            self.punto_seleccionado = self.punto_seleccionado.siguiente
+                    
+            elif opcion == 3:
+                print("**********************************************")
+                print("*1.Ver estado del punto de atención          *")
+                print("*2.Activar escritorio de servicio            *")
+                print("*3.Desactivar escritorio                     *")
+                print("*4.Atender cliente                           *")
+                print("*5.Solicitud de atención                     *")
+                print("*6.Simular actividad del punto de atención   *")
+                print("**********************************************")
+                opcion = int(input("Seleccione una opción: "))
+                self.clearConsole()
+                
+                if opcion == 1:
+                    if self.punto_seleccionado == None:
+                        print("No ha seleccionado ningun punto de atención.")
+                    else:
+                        print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
+                
+                
 
 
     

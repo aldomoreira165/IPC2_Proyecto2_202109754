@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<listadoInicial>
+    <configInicial id="2" idEmpresa="2" idPunto="P1E2">
+        <escritoriosActivos>
+            <escritorio idEscritorio="E1P1E2"/>
+        </escritoriosActivos>
+    </configInicial> 
+    <configInicial id="3" idEmpresa="2" idPunto="P2E2">
+        <escritoriosActivos>
+            <escritorio idEscritorio="E2P2E2"/>
+        </escritoriosActivos>
+    </configInicial>   
+</listadoInicial>

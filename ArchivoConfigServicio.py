@@ -45,7 +45,7 @@ class ArchivoConfigServicio:
                             lista_escritorios.agregar_final(nuevo_escritorio)
                             contador_escritorios += 1
                             
-                        nuevo_punto_atencion = PuntoAtencion(contador_puntos_atencion, codigo_punto_atencion, nombre_punto_atencion, direccion_punto_atencion, lista_escritorios)
+                        nuevo_punto_atencion = PuntoAtencion(contador_puntos_atencion, codigo_punto_atencion, nombre_punto_atencion, direccion_punto_atencion, lista_escritorios, None)
                         lista_puntos_atencion.agregar_final(nuevo_punto_atencion)
                         contador_puntos_atencion += 1   
                     
