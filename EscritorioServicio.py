@@ -7,3 +7,6 @@ class EscritorioServicio:
         self.identificacion = identificacion
         self.encargado = encargado
         self.activo = activo
+        
+    def activar_escritorio(self):
+        self.activo = True

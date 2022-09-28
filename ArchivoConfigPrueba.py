@@ -21,26 +21,40 @@ class ArchivoConfigPrueba:
                     
                     lista_escritorios_activos = Lista()
                     escritorios_activos = xml_data[contador_configuraciones][0] 
+                    
                     #almacenando los escritorios activos
                     for escritorio_activo in escritorios_activos:
                         id_escritorio_activo = escritorio_activo.get("idEscritorio")
                         lista_escritorios_activos.agregar_final(id_escritorio_activo)
                     
                     #validando que exista la empresa y el punto de atencion
-                    empresa = archivo.listaEmpresas.primero
+                    empresa_seleccionada = archivo.listaEmpresas.primero
                     for i in range(archivo.listaEmpresas.sizeOfList()):
-                        if empresa.dato.id == id_empresa:
-                            punto = empresa.dato.puntosAtencion.primero
-                            for j in range(empresa.dato.puntosAtencion.sizeOfList()):
-                                if punto.dato.codigo == id_punto:
-                                    escritorio = punto.dato.escritorios.primero
-                                    for k in range(punto.dato.escritorios.sizeOfList()):
-                                        print(escritorio.dato.codigo)  
-                                        escritorio = escritorio.siguiente                                                                                 
-                                else:
-                                    punto = punto.siguiente
-                        else: 
-                            empresa = empresa.siguiente
+                        if empresa_seleccionada.dato.id == id_empresa:
+                            break
+                        else:
+                            empresa_seleccionada = empresa_seleccionada.siguiente
+                            
+                    punto_atencion_seleccionado = empresa_seleccionada.dato.puntosAtencion.primero
+                    for j in range(empresa_seleccionada.dato.puntosAtencion.sizeOfList()):
+                        if punto_atencion_seleccionado.dato.codigo == id_punto:
+                            break
+                        else:
+                            punto_atencion_seleccionado = punto_atencion_seleccionado.siguiente 
+                       
+                    escritorio = punto_atencion_seleccionado.dato.escritorios.primero       
+                    for k in range(punto_atencion_seleccionado.dato.escritorios.sizeOfList()):
+                        esc_activo = lista_escritorios_activos.primero
+                        for z in range(lista_escritorios_activos.sizeOfList()):
+                            if escritorio.dato.codigo == esc_activo.dato: 
+                                print(escritorio.dato.codigo)
+                                escritorio = escritorio.siguiente
+                                break
+                            elif z+1 == lista_escritorios_activos.sizeOfList():
+                                escritorio = escritorio.siguiente
+                                break
+                            else:
+                                esc_activo = esc_activo.siguiente
                             
                     contador_configuraciones += 1
                                             

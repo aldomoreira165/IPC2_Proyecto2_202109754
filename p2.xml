@@ -3,8 +3,17 @@
     <configInicial id="1" idEmpresa="1" idPunto="P1E1">
         <escritoriosActivos>
             <escritorio idEscritorio="E1P1E1"/>
-            <escritorio idEscritorio="E4P1E1"/>
+            <escritorio idEscritorio="E3P1E1"/>
         </escritoriosActivos>
     </configInicial>
-    
+    <configInicial id="2" idEmpresa="2" idPunto="P1E2">
+        <escritoriosActivos>
+            <escritorio idEscritorio="E1P1E2"/>
+        </escritoriosActivos>
+    </configInicial> 
+    <configInicial id="3" idEmpresa="2" idPunto="P2E2">
+        <escritoriosActivos>
+            <escritorio idEscritorio="E2P2E2"/>
+        </escritoriosActivos>
+    </configInicial>   
 </listadoInicial>
