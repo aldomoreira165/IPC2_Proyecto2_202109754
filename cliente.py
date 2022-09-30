@@ -7,5 +7,6 @@ class Cliente:
         self.transacciones = transacciones
         self.atendido = atendido
         
-    def atendido(self):
+    def servido(self):
          self.atendido = True 
+         

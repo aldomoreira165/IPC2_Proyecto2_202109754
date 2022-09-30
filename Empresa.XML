@@ -1,0 +1,149 @@
+	<?xml version="1.0"?>
+	<listaEmpresas>
+ 		<empresa id="id1">
+ 			<nombre> Nuvel </nombre>
+			<abreviatura> nvl </abreviatura>
+			<listaPuntosAtencion>
+ 				<puntoAtencion id="cod11">
+ 					<nombre> plaza </nombre>
+ 					<direccion> Zona 2 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="cod1">
+ 							<encargado> Ale </encargado>
+ 						</escritorio>
+						<escritorio id="cod3">
+ 							<encargado> Jaimito </encargado>
+ 						</escritorio>  
+						<escritorio id="cod4">
+ 							<encargado> Aira </encargado>
+ 						</escritorio>  
+					</listaEscritorios>
+ 				</puntoAtencion>
+				<puntoAtencion id="$cod2">
+ 					<nombre> Centro </nombre>
+ 					<direccion> Zona 1 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="cod2">
+ 							<encargado> Carlos </encargado>
+ 						</escritorio> 
+						<escritorio id="cod34">
+ 							<encargado> Karina </encargado>
+ 						</escritorio> 
+					</listaEscritorios>
+ 				</puntoAtencion>  
+			</listaPuntosAtencion>
+			<listaTransacciones>
+ 				<transaccion id="12">
+ 					<nombre> pago </nombre>
+					<tiempoAtencion> 5 </tiempoAtencion>
+ 				</transaccion>
+				 <transaccion id="11">
+ 					<nombre> remesa </nombre>
+					<tiempoAtencion> 10 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="5">
+ 					<nombre> serie </nombre>
+					<tiempoAtencion> 3 </tiempoAtencion>
+ 				</transaccion>
+			</listaTransacciones>
+ 		</empresa>
+		<empresa id="234">
+ 			<nombre> Sedal </nombre>
+			<abreviatura> sdl </abreviatura>
+			<listaPuntosAtencion>
+ 				<puntoAtencion id="032">
+ 					<nombre> Capital </nombre>
+ 					<direccion> Zona 15 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="111">
+ 							<encargado> Clarita </encargado>
+ 						</escritorio>
+						<escritorio id="0101">
+ 							<encargado> Carmen </encargado>
+ 						</escritorio>  
+					</listaEscritorios>
+ 				</puntoAtencion>
+				<puntoAtencion id="033">
+ 					<nombre> Central </nombre>
+ 					<direccion> Zona 11 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="0001">
+ 							<encargado> Ray </encargado>
+ 						</escritorio> 
+ 						<escritorio id="12">
+ 							<encargado> Emma </encargado>
+ 						</escritorio>
+ 						<escritorio id="120">
+ 							<encargado> Norman </encargado>
+ 						</escritorio>
+					</listaEscritorios>
+ 				</puntoAtencion>  
+			</listaPuntosAtencion>
+			<listaTransacciones>
+ 				<transaccion id="112">
+ 					<nombre> pago </nombre>
+					<tiempoAtencion> 5 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="211">
+ 					<nombre> remesa </nombre>
+					<tiempoAtencion> 10 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="35">
+ 					<nombre> serie </nombre>
+					<tiempoAtencion> 3 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="15">
+ 					<nombre> cat </nombre>
+					<tiempoAtencion> 15 </tiempoAtencion>
+ 				</transaccion>	
+			</listaTransacciones>
+ 		</empresa>
+		<empresa id="3002">
+ 			<nombre> Garlic </nombre>
+			<abreviatura> grl </abreviatura>
+			<listaPuntosAtencion>
+ 				<puntoAtencion id="30">
+ 					<nombre> Calle </nombre>
+ 					<direccion> zona 2 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="02">
+ 							<encargado> Reili </encargado>
+ 						</escritorio>
+						<escritorio id="51">
+ 							<encargado> Toni </encargado>
+ 						</escritorio>  
+					</listaEscritorios>
+ 				</puntoAtencion>
+				<puntoAtencion id="02">
+ 					<nombre> Esquina </nombre>
+ 					<direccion> zona 12 </direccion>
+					<listaEscritorios>
+ 						<escritorio id="71">
+ 							<encargado> Sara </encargado>
+ 						</escritorio>
+						<escritorio id="55">
+ 							<encargado> Salinas </encargado>
+ 						</escritorio> 
+					</listaEscritorios>
+ 				</puntoAtencion>  
+			</listaPuntosAtencion>
+			<listaTransacciones>
+ 				<transaccion id="112">
+ 					<nombre> pago </nombre>
+					<tiempoAtencion> 5 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="211">
+ 					<nombre> remesa </nombre>
+					<tiempoAtencion> 10 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="35">
+ 					<nombre> serie </nombre>
+					<tiempoAtencion> 3 </tiempoAtencion>
+ 				</transaccion>
+				<transaccion id="15">
+ 					<nombre> cat </nombre>
+					<tiempoAtencion> 15 </tiempoAtencion>
+ 				</transaccion>	
+			</listaTransacciones>
+ 		</empresa>
+	</listaEmpresas>

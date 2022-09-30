@@ -26,6 +26,7 @@ class Menu:
             print("*1.Configuración de empresas                   *")
             print("*2.Selección de empresa y punto de atención    *")
             print("*3.Manejo de puntos  de atención               *")
+            print("*4.Salir                                       *")
             print("************************************************")
             opcion = int(input("Seleccione una opción: "))
             self.clearConsole()
@@ -228,20 +229,34 @@ class Menu:
                                 else:
                                     escritorio = escritorio.siguiente
                 elif opcion == 4:
-                    print("CLIENTES A SER ATENDIDOS")
+                    contador_estados = 0
+                    cola_clientes = Lista()
                     cliente = self.punto_seleccionado.dato.clientes.primero
                     for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                        print(i+1, cliente.dato.nombre, cliente.dato.atendido)
+                        cola_clientes.agregar_final(cliente)
                         cliente = cliente.siguiente
                     
-                    print("ESCRITORIOS ACTIVOS")    
+                    pila_escritorios_activos = Lista()   
                     escritorio = self.punto_seleccionado.dato.escritorios.primero
                     for j in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
                         if escritorio.dato.activo == True:
-                            print(j+1, escritorio.dato.codigo)
+                            pila_escritorios_activos.agregar_final(escritorio)
                             escritorio = escritorio.siguiente
                         else:
                             escritorio = escritorio.siguiente
+                    
+                    print("*******************************")
+                    escritorio_activo = pila_escritorios_activos.primero
+                    for k in range(pila_escritorios_activos.sizeOfList()):
+                        cliente_en_cola = cola_clientes.primero
+                        if escritorio_activo.dato.dato.libre == True:
+                            escritorio_activo.dato.dato.ocupar_escritorio()
+                            print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
+                            cola_clientes.eliminar_inicio()
+                            escritorio_activo = escritorio_activo.siguiente
+                        else:
+                            escritorio_activo = escritorio_activo.siguiente
+                    
                 elif opcion == 5:
                     dpi_cliente = input("Ingrese el DPI del cliente: ")
                     nombre_cliente = input("Ingrese el nombre del cliente: ")
@@ -262,6 +277,11 @@ class Menu:
                     self.punto_seleccionado.dato.clientes.agregar_final(nuevo_cliente)
                     self.clearConsole()
                     print("Solicitud de atención agregada correctamente.")
+                elif opcion == 6:
+                    pass
+            elif opcion == 4:
+                print("Has salido del sistema.")
+                exit()
                     
                     
     

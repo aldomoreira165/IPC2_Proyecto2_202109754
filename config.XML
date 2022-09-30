@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<listadoInicial>
+ 	<configInicial id="1" idEmpresa="id1" idPunto="cod11">
+ 		<escritoriosActivos>
+ 			<escritorio idEscritorio="cod1"/>
+ 			<escritorio idEscritorio="cod3"/>
+ 		<escritoriosActivos/>
+ 		<listadoClientes>
+ 			<cliente dpi="30027">
+ 				<nombre> Alquimidio <nombre/>
+ 				<listadoTransacciones>
+ 					<transaccion idTransaccion="12" cantidad="2"/>							<transaccion idTransaccion="5" cantidad="1"/>
+ 				<listadoTransacciones/>
+ 			<cliente/>
+ 		<listadoClientes/>
+ 	<configInicial/>
+<listadoInicial/>
