@@ -49,7 +49,7 @@ class ArchivoConfigPrueba:
                             lista_transacciones.agregar_final(transaccion_cliente_nueva)
                             contador_transacciones += 1
                         
-                        nuevo_cliente = Cliente(contador_clientes, dpi_cliente, nombre_cliente, lista_transacciones)
+                        nuevo_cliente = Cliente(dpi_cliente, nombre_cliente, lista_transacciones, False)
                         lista_clientes.agregar_final(nuevo_cliente)
                         contador_clientes += 1
                         
@@ -84,8 +84,7 @@ class ArchivoConfigPrueba:
                                 break
                             else:
                                 esc_activo = esc_activo.siguiente
-                                
-                            
+                                                         
                     contador_configuraciones += 1
                                             
         except Exception as err:

@@ -1,9 +1,11 @@
 
 class Cliente:
     
-    def __init__ (self, numero, dpi, nombre, transacciones):
-        self.numero = numero
+    def __init__ (self, dpi, nombre, transacciones, atendido):
         self.dpi = dpi
         self.nombre = nombre
         self.transacciones = transacciones
-
+        self.atendido = atendido
+        
+    def atendido(self):
+         self.atendido = True 

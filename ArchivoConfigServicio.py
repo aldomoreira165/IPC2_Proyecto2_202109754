@@ -41,7 +41,7 @@ class ArchivoConfigServicio:
                             codigo_escritorio = escritorio.get("id")
                             identificacion_escritorio = escritorio.find("identificacion").text
                             encargado_escritorio = escritorio.find("encargado").text
-                            nuevo_escritorio = EscritorioServicio(contador_escritorios,codigo_escritorio, identificacion_escritorio, encargado_escritorio, False)
+                            nuevo_escritorio = EscritorioServicio(contador_escritorios,codigo_escritorio, identificacion_escritorio, encargado_escritorio, False, True)
                             lista_escritorios.agregar_final(nuevo_escritorio)
                             contador_escritorios += 1
                             

@@ -1,5 +1,7 @@
 from ArchivoConfigServicio import ArchivoConfigServicio
 from ArchivoConfigPrueba import ArchivoConfigPrueba
+from Cliente import Cliente
+from Lista import Lista
 import os
 
 class Menu:
@@ -44,6 +46,9 @@ class Menu:
                         print("No hay ningún archivo cargado en el sistema.")
                     else:  
                         self.archivo = None
+                        self.archivop = None
+                        self.empresa_seleccionada = None
+                        self.punto_seleccionado = None
                         print("Sistema limpiado con éxito.")
                 elif opcion == 2:
                     self.clearConsole()
@@ -136,6 +141,8 @@ class Menu:
                             contador_escritorios_activos = 0
                             contador_escritorios_inactivos = 0
                             cantidad_clientes_espera = self.punto_seleccionado.dato.clientes.sizeOfList()
+                            suma_tiempos = 0
+                            contador_tiempos = 0
                             tiempo_promedio_espera = 0
                             print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
                             print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
@@ -155,13 +162,106 @@ class Menu:
                             
                             cliente = self.punto_seleccionado.dato.clientes.primero
                             for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                                print(cliente.dato.nombre)
                                 transaccion = cliente.dato.transacciones.primero
                                 for j in range(cliente.dato.transacciones.sizeOfList()):
-                                    print(transaccion.dato.codigo)
-                                    transaccion = transaccion.siguiente
+                                    transaccion_empresa = self.empresa_seleccionada.dato.transacciones.primero
+                                    for k in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
+                                        if transaccion.dato.codigo == transaccion_empresa.dato.identificacion:
+                                            suma_tiempos += int(transaccion_empresa.dato.tiempo)
+                                            contador_tiempos += 1
+                                            transaccion = transaccion.siguiente
+                                            break
+                                        elif k+1 == self.empresa_seleccionada.dato.transacciones.sizeOfList():
+                                            transaccion = transaccion.siguiente
+                                            break
+                                        else:
+                                            transaccion_empresa = transaccion_empresa.siguiente
                                 cliente = cliente.siguiente
+                                
+                            tiempo_promedio_espera = round(suma_tiempos/contador_tiempos,2)    
+                            print(f"Tiempo promedio de atención: {tiempo_promedio_espera} minutos")
                 
-
-
+                            escritorio = self.punto_seleccionado.dato.escritorios.primero
+                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                if escritorio.dato.activo == True:
+                                    contador_escritorios_activos += 1
+                                    escritorio = escritorio.siguiente
+                                else:
+                                    contador_escritorios_inactivos += 1
+                                    escritorio = escritorio.siguiente
+                elif opcion == 2:
+                    if self.archivo == None:
+                        print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
+                    else:
+                        if self.punto_seleccionado == None:
+                            print("No ha seleccionado ningun punto de atención.")
+                        else:
+                            print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
+                            print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
+                            print("")
+                            codigo_escritorio_activar = input("Ingrese el código del escritorio que desea activar: ")
+                            
+                            escritorio = self.punto_seleccionado.dato.escritorios.primero
+                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                if codigo_escritorio_activar == str(escritorio.dato.codigo):
+                                    escritorio.dato.activar_escritorio()
+                                    break
+                                else:
+                                    escritorio = escritorio.siguiente
+                elif opcion == 3:
+                    if self.archivo == None:
+                        print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
+                    else:
+                        if self.punto_seleccionado == None:
+                            print("No ha seleccionado ningun punto de atención.")
+                        else:
+                            print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
+                            print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
+                            print("")
+                            codigo_escritorio_activar = input("Ingrese el código del escritorio que desea desactivar: ")
+                            
+                            escritorio = self.punto_seleccionado.dato.escritorios.primero
+                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                if codigo_escritorio_activar == str(escritorio.dato.codigo):
+                                    escritorio.dato.desactivar_escritorio()
+                                    break
+                                else:
+                                    escritorio = escritorio.siguiente
+                elif opcion == 4:
+                    print("CLIENTES A SER ATENDIDOS")
+                    cliente = self.punto_seleccionado.dato.clientes.primero
+                    for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                        print(i+1, cliente.dato.nombre, cliente.dato.atendido)
+                        cliente = cliente.siguiente
+                    
+                    print("ESCRITORIOS ACTIVOS")    
+                    escritorio = self.punto_seleccionado.dato.escritorios.primero
+                    for j in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                        if escritorio.dato.activo == True:
+                            print(j+1, escritorio.dato.codigo)
+                            escritorio = escritorio.siguiente
+                        else:
+                            escritorio = escritorio.siguiente
+                elif opcion == 5:
+                    dpi_cliente = input("Ingrese el DPI del cliente: ")
+                    nombre_cliente = input("Ingrese el nombre del cliente: ")
+                    self.clearConsole()
+ 
+                    lista_transacciones = Lista()
+                    transaccion = self.empresa_seleccionada.dato.transacciones.primero
+                    for i in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
+                        print(transaccion.dato.identificacion, transaccion.dato.nombre)
+                        respuesta =  (input("¿Desea agregar esta transacción a su lista de transacciones? S/N")).lower()
+                        if respuesta == "s":
+                            lista_transacciones.agregar_final(transaccion)
+                            transaccion = transaccion.siguiente
+                        else:
+                            transaccion = transaccion.siguiente
+                            
+                    nuevo_cliente = Cliente(dpi_cliente, nombre_cliente, lista_transacciones, False)
+                    self.punto_seleccionado.dato.clientes.agregar_final(nuevo_cliente)
+                    self.clearConsole()
+                    print("Solicitud de atención agregada correctamente.")
+                    
+                    
     
