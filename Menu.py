@@ -4,6 +4,9 @@ from Cliente import Cliente
 from Lista import Lista
 import os
 
+from Transaccion import Transaccion
+from TransaccionCliente import TransaccionCliente
+
 class Menu:
     
     def __init__ (self):
@@ -229,12 +232,14 @@ class Menu:
                                 else:
                                     escritorio = escritorio.siguiente
                 elif opcion == 4:
-                    contador_estados = 0
                     cola_clientes = Lista()
                     cliente = self.punto_seleccionado.dato.clientes.primero
                     for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                        cola_clientes.agregar_final(cliente)
-                        cliente = cliente.siguiente
+                        if cliente.dato.atendido == False:
+                            cola_clientes.agregar_final(cliente)
+                            cliente = cliente.siguiente
+                        else:
+                            cliente = cliente.siguiente                         
                     
                     pila_escritorios_activos = Lista()   
                     escritorio = self.punto_seleccionado.dato.escritorios.primero
@@ -245,19 +250,58 @@ class Menu:
                         else:
                             escritorio = escritorio.siguiente
                     
-                    print("*******************************")
+                    #atendiendo clientes
                     escritorio_activo = pila_escritorios_activos.primero
                     for k in range(pila_escritorios_activos.sizeOfList()):
-                        cliente_en_cola = cola_clientes.primero
-                        if escritorio_activo.dato.dato.libre == True:
-                            escritorio_activo.dato.dato.ocupar_escritorio()
-                            print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
-                            cola_clientes.eliminar_inicio()
-                            escritorio_activo = escritorio_activo.siguiente
+                        if cola_clientes.sizeOfList() > 0:
+                            cliente_en_cola = cola_clientes.primero
+                            if escritorio_activo.dato.dato.libre == True:
+                                escritorio_activo.dato.dato.ocupar_escritorio()
+                                print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
+                                
+                                #marcando a cliente como atendido
+                                cliente_atendido = self.punto_seleccionado.dato.clientes.primero
+                                for n in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                                    if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
+                                        cliente_atendido.dato.servido()
+                                        cliente_atendido = cliente_atendido.siguiente
+                                    else: 
+                                        cliente_atendido = cliente_atendido.siguiente
+                                
+                                cola_clientes.eliminar_inicio()
+                                escritorio_activo = escritorio_activo.siguiente
+                            else:
+                                escritorio_activo = escritorio_activo.siguiente
+                                escritorio_activo.dato.dato.ocupar_escritorio()
+                                print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
+                                
+                                #marcando a cliente como atendido
+                                cliente_atendido = self.punto_seleccionado.dato.clientes.primero
+                                for n in range(self.punto_seleccionado.dato.cliente.sizeOfList()):
+                                    if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
+                                        cliente_atendido.dato.servido()
+                                        cliente_atendido = cliente_atendido.siguiente
+                                    else: 
+                                        cliente_atendido = cliente_atendido.siguiente
+                                
+                                cola_clientes.eliminar_inicio()
+                                escritorio_activo = escritorio_activo.siguiente
                         else:
-                            escritorio_activo = escritorio_activo.siguiente
+                            break
+                                
+                        
+                            
+                    #liberando escritorios luego de hanerlos atendido
+                    escritorio = self.punto_seleccionado.dato.escritorios.primero
+                    for z in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                        if escritorio.dato.libre == False:
+                            escritorio.dato.liberar_escritorio()
+                            escritorio = escritorio.siguiente
+                        else:
+                            escritorio = escritorio.siguiente                            
                     
                 elif opcion == 5:
+                    contador_transacciones = 0
                     dpi_cliente = input("Ingrese el DPI del cliente: ")
                     nombre_cliente = input("Ingrese el nombre del cliente: ")
                     self.clearConsole()
@@ -268,7 +312,10 @@ class Menu:
                         print(transaccion.dato.identificacion, transaccion.dato.nombre)
                         respuesta =  (input("¿Desea agregar esta transacción a su lista de transacciones? S/N")).lower()
                         if respuesta == "s":
-                            lista_transacciones.agregar_final(transaccion)
+                            cantidad_transacciones = int(input("Ingrese la cantidad de transacciones de este tipo que desea realizar: "))
+                            contador_transacciones += 1
+                            nueva_transaccion = TransaccionCliente(contador_transacciones, transaccion.dato.identificacion, cantidad_transacciones)
+                            lista_transacciones.agregar_final(nueva_transaccion)
                             transaccion = transaccion.siguiente
                         else:
                             transaccion = transaccion.siguiente

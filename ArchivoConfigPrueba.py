@@ -44,7 +44,7 @@ class ArchivoConfigPrueba:
                         transacciones = clientela[contador_clientes][1]
                         for transaccion in transacciones:
                             id_transaccion = transaccion.get("idTransaccion")
-                            cantidad_transaccion = transaccion.get("cantidad")
+                            cantidad_transaccion = int(transaccion.get("cantidad"))
                             transaccion_cliente_nueva = TransaccionCliente(contador_transacciones, id_transaccion, cantidad_transaccion)
                             lista_transacciones.agregar_final(transaccion_cliente_nueva)
                             contador_transacciones += 1

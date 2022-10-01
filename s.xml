@@ -3,6 +3,7 @@
     <configInicial id="1" idEmpresa="1" idPunto="P1E1">
         <escritoriosActivos>
             <escritorio idEscritorio="E1P1E1"/>
+            <escritorio idEscritorio="E2P1E1"/>
             <escritorio idEscritorio="E3P1E1"/>
         </escritoriosActivos>
         <listadoClientes>
@@ -23,6 +24,35 @@
             </cliente>
             <cliente dpi="15">
                 <nombre>Axel Moreira</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T2E1" cantidad="50"/>
+                    <transaccion idTransaccion="T4E1" cantidad="500"/>
+                </listadoTransacciones>
+            </cliente>
+            <cliente dpi="1000">
+                <nombre>Jimena Arreaga</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T1E1" cantidad="100"/>
+                    <transaccion idTransaccion="T2E1" cantidad="100"/>
+                    <transaccion idTransaccion="T3E1" cantidad="100"/>
+                    <transaccion idTransaccion="T4E1" cantidad="50"/>
+                </listadoTransacciones>
+            </cliente>
+            <cliente dpi="151">
+                <nombre>Ana Moreira</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T1E1" cantidad="100"/>/>
+                </listadoTransacciones>
+            </cliente>
+            <cliente dpi="1782">
+                <nombre>Rubí Martínez</nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="T2E1" cantidad="50"/>
+                    <transaccion idTransaccion="T4E1" cantidad="500"/>
+                </listadoTransacciones>
+            </cliente>
+            <cliente dpi="178288">
+                <nombre>Pin Plata</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T2E1" cantidad="50"/>
                     <transaccion idTransaccion="T4E1" cantidad="500"/>
