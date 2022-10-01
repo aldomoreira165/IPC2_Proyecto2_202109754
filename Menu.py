@@ -2,6 +2,7 @@ from ArchivoConfigServicio import ArchivoConfigServicio
 from ArchivoConfigPrueba import ArchivoConfigPrueba
 from Cliente import Cliente
 from Lista import Lista
+from GeneradorGrafica import GeneradorGrafica
 import os
 
 from Transaccion import Transaccion
@@ -289,9 +290,7 @@ class Menu:
                         else:
                             break
                                 
-                        
-                            
-                    #liberando escritorios luego de hanerlos atendido
+                    #liberando escritorios luego de haberlos atendido
                     escritorio = self.punto_seleccionado.dato.escritorios.primero
                     for z in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
                         if escritorio.dato.libre == False:
@@ -325,7 +324,14 @@ class Menu:
                     self.clearConsole()
                     print("Solicitud de atención agregada correctamente.")
                 elif opcion == 6:
-                    pass
+                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios)
+                    graph = grafica.generar_grafica()
+                    miArchivo = open('graphviz.dot', 'w')
+                    miArchivo.write(graph)
+                    miArchivo.close()
+                    
+                    os.system('dot -Tpng graphviz.dot -o graphviz.png')
+
             elif opcion == 4:
                 print("Has salido del sistema.")
                 exit()

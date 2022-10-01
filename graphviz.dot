@@ -1,0 +1,12 @@
+digraph L{
+    node[shape=box, fillcolor="RED" style=filled]
+    subgraph cluster_p{
+       label = "Empresa 1"
+        bgcolor = "BLUE"
+        edge[dir = both]
+        Fila1[label="E1P1E1", group =1, fillcolor=GREEN];
+        Fila2[label="E2P1E1", group =1, fillcolor=RED];
+        Fila3[label="E3P1E1", group =1, fillcolor=GREEN];
+        Fila4[label="E4P1E1", group =1, fillcolor=RED];
+    }
+}
