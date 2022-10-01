@@ -4,8 +4,6 @@ from Cliente import Cliente
 from Lista import Lista
 from GeneradorGrafica import GeneradorGrafica
 import os
-
-from Transaccion import Transaccion
 from TransaccionCliente import TransaccionCliente
 
 class Menu:
@@ -324,7 +322,7 @@ class Menu:
                     self.clearConsole()
                     print("Solicitud de atención agregada correctamente.")
                 elif opcion == 6:
-                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios)
+                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios, self.punto_seleccionado.dato.clientes)
                     graph = grafica.generar_grafica()
                     miArchivo = open('graphviz.dot', 'w')
                     miArchivo.write(graph)

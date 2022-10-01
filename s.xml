@@ -17,7 +17,7 @@
                 </listadoTransacciones>
             </cliente>
             <cliente dpi="1515">
-                <nombre>Verónica Moreira</nombre>
+                <nombre>Veronica Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>/>
                 </listadoTransacciones>
@@ -45,7 +45,7 @@
                 </listadoTransacciones>
             </cliente>
             <cliente dpi="1782">
-                <nombre>Rubí Martínez</nombre>
+                <nombre>Rubi Martinez</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T2E1" cantidad="50"/>
                     <transaccion idTransaccion="T4E1" cantidad="500"/>

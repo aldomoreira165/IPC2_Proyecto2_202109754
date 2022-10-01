@@ -1,12 +1,19 @@
 digraph L{
-    node[shape=box, fillcolor="RED" style=filled]
+    node[shape=box, fillcolor="ORANGE" style=filled]
     subgraph cluster_p{
        label = "Empresa 1"
         bgcolor = "BLUE"
+        raiz[label = "Entrada a escritorios"]
         edge[dir = both]
-        Fila1[label="E1P1E1", group =1, fillcolor=GREEN];
-        Fila2[label="E2P1E1", group =1, fillcolor=RED];
-        Fila3[label="E3P1E1", group =1, fillcolor=GREEN];
-        Fila4[label="E4P1E1", group =1, fillcolor=RED];
+        Columna1[label="E1P1E1", group =2, fillcolor=RED];
+        Columna2[label="E2P1E1", group =3, fillcolor=GREEN];
+        Columna3[label="E3P1E1", group =4, fillcolor=RED];
+        Columna4[label="E4P1E1", group =5, fillcolor=GREEN];
+       Columna1->Columna2;
+       Columna2->Columna3;
+       Columna3->Columna4;
+        raiz->Fila1;
+        raiz->Columna1;
+        {rank=same;raiz;Columna1;Columna2;Columna3;Columna4}
     }
 }
