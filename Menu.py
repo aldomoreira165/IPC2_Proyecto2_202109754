@@ -13,6 +13,7 @@ class Menu:
         self.archivop = None
         self.empresa_seleccionada = None
         self.punto_seleccionado = None
+        self.cola = None
         
     #funcion para limpiar consola
     def clearConsole(self):
@@ -231,6 +232,7 @@ class Menu:
                                 else:
                                     escritorio = escritorio.siguiente
                 elif opcion == 4:
+                    self.cola = Lista()
                     cola_clientes = Lista()
                     cliente = self.punto_seleccionado.dato.clientes.primero
                     for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
@@ -238,8 +240,13 @@ class Menu:
                             cola_clientes.agregar_final(cliente)
                             cliente = cliente.siguiente
                         else:
-                            cliente = cliente.siguiente                         
-                    
+                            cliente = cliente.siguiente
+                            
+                    x = cola_clientes.primero
+                    for m in range(cola_clientes.sizeOfList()):                         
+                        print(x.dato.dato.nombre)
+                        x = x.siguiente
+                        
                     pila_escritorios_activos = Lista()   
                     escritorio = self.punto_seleccionado.dato.escritorios.primero
                     for j in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
@@ -254,48 +261,28 @@ class Menu:
                     for k in range(pila_escritorios_activos.sizeOfList()):
                         if cola_clientes.sizeOfList() > 0:
                             cliente_en_cola = cola_clientes.primero
-                            if escritorio_activo.dato.dato.libre == True:
-                                escritorio_activo.dato.dato.ocupar_escritorio()
-                                print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
-                                
-                                #marcando a cliente como atendido
-                                cliente_atendido = self.punto_seleccionado.dato.clientes.primero
-                                for n in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                                    if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
-                                        cliente_atendido.dato.servido()
-                                        cliente_atendido = cliente_atendido.siguiente
-                                    else: 
-                                        cliente_atendido = cliente_atendido.siguiente
-                                
-                                cola_clientes.eliminar_inicio()
-                                escritorio_activo = escritorio_activo.siguiente
-                            else:
-                                escritorio_activo = escritorio_activo.siguiente
-                                escritorio_activo.dato.dato.ocupar_escritorio()
-                                print(cliente_en_cola.dato.dato.nombre, escritorio_activo.dato.dato.codigo)
-                                
-                                #marcando a cliente como atendido
-                                cliente_atendido = self.punto_seleccionado.dato.clientes.primero
-                                for n in range(self.punto_seleccionado.dato.cliente.sizeOfList()):
-                                    if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
-                                        cliente_atendido.dato.servido()
-                                        cliente_atendido = cliente_atendido.siguiente
-                                    else: 
-                                        cliente_atendido = cliente_atendido.siguiente
-                                
-                                cola_clientes.eliminar_inicio()
-                                escritorio_activo = escritorio_activo.siguiente
+                        
+                            #marcando a cliente como atendido
+                            cliente_atendido = self.punto_seleccionado.dato.clientes.primero
+                            for n in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                                if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
+                                    cliente_atendido.dato.servido()
+                                    cliente_atender = Cliente(cliente_atendido.dato.dpi, cliente_atendido.dato.nombre, cliente_atendido.dato.transacciones, cliente_atendido.dato.atendido)
+                                    self.cola.agregar_final(cliente_atender)
+                                    cola_clientes.eliminar_inicio()
+                                    break
+                                else: 
+                                    cliente_atendido = cliente_atendido.siguiente
+                            
+                            escritorio_activo = escritorio_activo.siguiente
+                                 
                         else:
                             break
-                                
-                    #liberando escritorios luego de haberlos atendido
-                    escritorio = self.punto_seleccionado.dato.escritorios.primero
-                    for z in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
-                        if escritorio.dato.libre == False:
-                            escritorio.dato.liberar_escritorio()
-                            escritorio = escritorio.siguiente
-                        else:
-                            escritorio = escritorio.siguiente                            
+                    
+                    h = self.cola.primero    
+                    for m in range(self.cola.sizeOfList()):
+                        print(h.dato.nombre)
+                        h = h.siguiente                            
                     
                 elif opcion == 5:
                     contador_transacciones = 0
@@ -322,7 +309,7 @@ class Menu:
                     self.clearConsole()
                     print("Solicitud de atención agregada correctamente.")
                 elif opcion == 6:
-                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios, self.punto_seleccionado.dato.clientes)
+                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios, self.punto_seleccionado.dato.clientes, self.cola)
                     graph = grafica.generar_grafica()
                     miArchivo = open('graphviz.dot', 'w')
                     miArchivo.write(graph)

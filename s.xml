@@ -7,7 +7,7 @@
             <escritorio idEscritorio="E3P1E1"/>
         </escritoriosActivos>
         <listadoClientes>
-            <cliente dpi="1515">
+            <cliente dpi="1111">
                 <nombre>Aldo Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>
@@ -16,20 +16,20 @@
                     <transaccion idTransaccion="T4E1" cantidad="50"/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="1515">
+            <cliente dpi="2222">
                 <nombre>Veronica Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="15">
+            <cliente dpi="3333">
                 <nombre>Axel Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T2E1" cantidad="50"/>
                     <transaccion idTransaccion="T4E1" cantidad="500"/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="1000">
+            <cliente dpi="4444">
                 <nombre>Jimena Arreaga</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>
@@ -38,20 +38,20 @@
                     <transaccion idTransaccion="T4E1" cantidad="50"/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="151">
+            <cliente dpi="5555">
                 <nombre>Ana Moreira</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T1E1" cantidad="100"/>/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="1782">
+            <cliente dpi="6666">
                 <nombre>Rubi Martinez</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T2E1" cantidad="50"/>
                     <transaccion idTransaccion="T4E1" cantidad="500"/>
                 </listadoTransacciones>
             </cliente>
-            <cliente dpi="178288">
+            <cliente dpi="7777">
                 <nombre>Pin Plata</nombre>
                 <listadoTransacciones>
                     <transaccion idTransaccion="T2E1" cantidad="50"/>

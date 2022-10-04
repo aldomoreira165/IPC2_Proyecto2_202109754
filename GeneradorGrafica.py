@@ -3,13 +3,16 @@ import graphviz
 
 class GeneradorGrafica:
     
-    def __init__(self, nombre_empresa, lista_escritorios, cola_clientes):
+    def __init__(self, nombre_empresa, lista_escritorios, cola_clientes, clientes_en_atencion):
         self.cadena = ""
         self.nombre_empresa = nombre_empresa
         self.lista_escritorios = lista_escritorios
         self.cola_clientes = cola_clientes
+        self.clientes_en_atencion = clientes_en_atencion 
     
     def generar_grafica(self):
+        numero_columnas = []
+        
         #cadena de estructura inicial
         self.cadena += 'digraph L{\n'
         self.cadena += '    node[shape=box, fillcolor="ORANGE" style=filled]\n'
@@ -22,13 +25,15 @@ class GeneradorGrafica:
         #ciclo para hacer las filas de los  clientes 
         cliente = self.cola_clientes.primero
         contador_clientes_espera = 0
-        for i in range(self.cola_clientes.sizeOfList()):
-            if cliente.dato.atendido == False:
-                contador_clientes_espera += 1
-                self.cadena +=f'        Fila{contador_clientes_espera}[label="{cliente.dato.nombre}", group =1, fillcolor=YELLOW];\n'
-                cliente = cliente.siguiente
-            else:
-                cliente = cliente.siguiente
+        
+        if self.cola_clientes.sizeOfList() > 0:
+            for i in range(self.cola_clientes.sizeOfList()):
+                if cliente.dato.atendido == False:
+                    contador_clientes_espera += 1
+                    self.cadena +=f'        Fila{contador_clientes_espera}[label="{cliente.dato.nombre}", group =1, fillcolor=YELLOW];\n'
+                    cliente = cliente.siguiente
+                else:
+                    cliente = cliente.siguiente
         
         #ciclo para enlazar las filas                     
         for j in range(contador_clientes_espera-1):
@@ -47,6 +52,7 @@ class GeneradorGrafica:
             color = ""
             if escritorio.dato.activo == True:
                 color = "GREEN"
+                numero_columnas.append(i+1)
             else:
                 color = "RED"
             self.cadena +=f'        Columna{contador_escritorios}[label="{escritorio.dato.codigo}", group ={contador_escritorios+1}, fillcolor={color}];\n'
@@ -61,7 +67,22 @@ class GeneradorGrafica:
         self.cadena += '        raiz->Columna1;\n'
         
         #aquí vamos a alinear cada nodo cabecera a las columnas
-        self.cadena += '        {'+f'rank=same;raiz;{cadena_columnas}'+'}\n'  
+        self.cadena += '        {'+f'rank=same;raiz;{cadena_columnas}'+'}\n'
+        
+        if self.clientes_en_atencion != None:
+            cliente_proceso = self.clientes_en_atencion.primero
+            for k in range(self.clientes_en_atencion.sizeOfList()):
+                self.cadena += f'        Nodo{k+1}[label="{cliente_proceso.dato.nombre}", fillcolor="YELLOW", group={k+2}\n]'
+                cliente_proceso = cliente_proceso.siguiente
+        else:
+            pass
+        
+        if self.clientes_en_atencion != None:
+            for k in range(self.clientes_en_atencion.sizeOfList()):
+                self.cadena += f'        Columna{numero_columnas[k]}->Nodo{k+1}\n'
+        else:
+            pass
+        
                      
         self.cadena += '    }\n'
         self.cadena += '}\n'
