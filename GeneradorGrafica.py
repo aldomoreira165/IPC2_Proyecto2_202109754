@@ -8,7 +8,8 @@ class GeneradorGrafica:
         self.nombre_empresa = nombre_empresa
         self.lista_escritorios = lista_escritorios
         self.cola_clientes = cola_clientes
-        self.clientes_en_atencion = clientes_en_atencion 
+        self.clientes_en_atencion = clientes_en_atencion
+        self.numero_clientes_atendidos = 0 
     
     def generar_grafica(self):
         numero_columnas = []

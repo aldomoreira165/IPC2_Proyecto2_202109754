@@ -142,57 +142,60 @@ class Menu:
                         if self.punto_seleccionado == None:
                             print("No ha seleccionado ningun punto de atención.")
                         else:
-                            contador_escritorios_activos = 0
-                            contador_escritorios_inactivos = 0
-                            cantidad_clientes_espera = self.punto_seleccionado.dato.clientes.sizeOfList()
-                            suma_tiempos = 0
-                            contador_tiempos = 0
-                            tiempo_promedio_espera = 0
-                            print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
-                            print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
-                            print("")
-                            escritorio = self.punto_seleccionado.dato.escritorios.primero
-                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
-                                if escritorio.dato.activo == True:
-                                    contador_escritorios_activos += 1
-                                    escritorio = escritorio.siguiente
-                                else:
-                                    contador_escritorios_inactivos += 1
-                                    escritorio = escritorio.siguiente
-                                                        
-                            print(f"Cantidad de escritorios de servicio activos: {contador_escritorios_activos}")
-                            print(f"Cantidad de escritorios de servicio inactivos: {contador_escritorios_inactivos}")
-                            print(f"Cantidad de clientes en espera: {cantidad_clientes_espera}")
-                            
-                            cliente = self.punto_seleccionado.dato.clientes.primero
-                            for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                                transaccion = cliente.dato.transacciones.primero
-                                for j in range(cliente.dato.transacciones.sizeOfList()):
-                                    transaccion_empresa = self.empresa_seleccionada.dato.transacciones.primero
-                                    for k in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
-                                        if transaccion.dato.codigo == transaccion_empresa.dato.identificacion:
-                                            suma_tiempos += int(transaccion_empresa.dato.tiempo)
-                                            contador_tiempos += 1
-                                            transaccion = transaccion.siguiente
-                                            break
-                                        elif k+1 == self.empresa_seleccionada.dato.transacciones.sizeOfList():
-                                            transaccion = transaccion.siguiente
-                                            break
-                                        else:
-                                            transaccion_empresa = transaccion_empresa.siguiente
-                                cliente = cliente.siguiente
+                            if self.punto_seleccionado.dato.clientes == None:
+                                print("El punto de atención seleccionado no tiene clientes registrados")
+                            else:
+                                contador_escritorios_activos = 0
+                                contador_escritorios_inactivos = 0
+                                cantidad_clientes_espera = self.punto_seleccionado.dato.clientes.sizeOfList()
+                                suma_tiempos = 0
+                                contador_tiempos = 0
+                                tiempo_promedio_espera = 0
+                                print(f"Empresa seleccionada: {self.empresa_seleccionada.dato.nombre}")
+                                print(f"Punto de atención seleccionado: {self.punto_seleccionado.dato.nombre}")
+                                print("")
+                                escritorio = self.punto_seleccionado.dato.escritorios.primero
+                                for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                    if escritorio.dato.activo == True:
+                                        contador_escritorios_activos += 1
+                                        escritorio = escritorio.siguiente
+                                    else:
+                                        contador_escritorios_inactivos += 1
+                                        escritorio = escritorio.siguiente
+                                                            
+                                print(f"Cantidad de escritorios de servicio activos: {contador_escritorios_activos}")
+                                print(f"Cantidad de escritorios de servicio inactivos: {contador_escritorios_inactivos}")
+                                print(f"Cantidad de clientes en espera: {cantidad_clientes_espera}")
                                 
-                            tiempo_promedio_espera = round(suma_tiempos/contador_tiempos,2)    
-                            print(f"Tiempo promedio de atención: {tiempo_promedio_espera} minutos")
-                
-                            escritorio = self.punto_seleccionado.dato.escritorios.primero
-                            for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
-                                if escritorio.dato.activo == True:
-                                    contador_escritorios_activos += 1
-                                    escritorio = escritorio.siguiente
-                                else:
-                                    contador_escritorios_inactivos += 1
-                                    escritorio = escritorio.siguiente
+                                cliente = self.punto_seleccionado.dato.clientes.primero
+                                for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                                    transaccion = cliente.dato.transacciones.primero
+                                    for j in range(cliente.dato.transacciones.sizeOfList()):
+                                        transaccion_empresa = self.empresa_seleccionada.dato.transacciones.primero
+                                        for k in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
+                                            if transaccion.dato.codigo == transaccion_empresa.dato.identificacion:
+                                                suma_tiempos += int(transaccion_empresa.dato.tiempo)
+                                                contador_tiempos += 1
+                                                transaccion = transaccion.siguiente
+                                                break
+                                            elif k+1 == self.empresa_seleccionada.dato.transacciones.sizeOfList():
+                                                transaccion = transaccion.siguiente
+                                                break
+                                            else:
+                                                transaccion_empresa = transaccion_empresa.siguiente
+                                    cliente = cliente.siguiente
+                                    
+                                tiempo_promedio_espera = round(suma_tiempos/contador_tiempos,2)    
+                                print(f"Tiempo promedio de atención: {tiempo_promedio_espera} minutos")
+                    
+                                escritorio = self.punto_seleccionado.dato.escritorios.primero
+                                for i in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                                    if escritorio.dato.activo == True:
+                                        contador_escritorios_activos += 1
+                                        escritorio = escritorio.siguiente
+                                    else:
+                                        contador_escritorios_inactivos += 1
+                                        escritorio = escritorio.siguiente
                 elif opcion == 2:
                     if self.archivo == None:
                         print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
@@ -232,90 +235,105 @@ class Menu:
                                 else:
                                     escritorio = escritorio.siguiente
                 elif opcion == 4:
-                    self.cola = Lista()
-                    cola_clientes = Lista()
-                    cliente = self.punto_seleccionado.dato.clientes.primero
-                    for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                        if cliente.dato.atendido == False:
-                            cola_clientes.agregar_final(cliente)
-                            cliente = cliente.siguiente
-                        else:
-                            cliente = cliente.siguiente
-                            
-                    x = cola_clientes.primero
-                    for m in range(cola_clientes.sizeOfList()):                         
-                        print(x.dato.dato.nombre)
-                        x = x.siguiente
-                        
-                    pila_escritorios_activos = Lista()   
-                    escritorio = self.punto_seleccionado.dato.escritorios.primero
-                    for j in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
-                        if escritorio.dato.activo == True:
-                            pila_escritorios_activos.agregar_final(escritorio)
-                            escritorio = escritorio.siguiente
-                        else:
-                            escritorio = escritorio.siguiente
+                    if self.archivo == None:
+                        print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
+                    elif self.archivop == None:
+                        print("No has ingresado ningún archivo de prueba.")
+                    elif self.punto_seleccionado.dato.clientes == None:
+                        print("El punto de atención seleccionado no tiene un registro de clientes.")
+                    else:
+                        self.cola = Lista()
+                        cola_clientes = Lista()
+                        cliente = self.punto_seleccionado.dato.clientes.primero
+                        for i in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                            if cliente.dato.atendido == False:
+                                cola_clientes.agregar_final(cliente)
+                                cliente = cliente.siguiente
+                            else:
+                                cliente = cliente.siguiente
+                                
+                        pila_escritorios_activos = Lista()   
+                        escritorio = self.punto_seleccionado.dato.escritorios.primero
+                        for j in range(self.punto_seleccionado.dato.escritorios.sizeOfList()):
+                            if escritorio.dato.activo == True:
+                                pila_escritorios_activos.agregar_final(escritorio)
+                                escritorio = escritorio.siguiente
+                            else:
+                                escritorio = escritorio.siguiente
                     
-                    #atendiendo clientes
-                    escritorio_activo = pila_escritorios_activos.primero
-                    for k in range(pila_escritorios_activos.sizeOfList()):
-                        if cola_clientes.sizeOfList() > 0:
-                            cliente_en_cola = cola_clientes.primero
-                        
-                            #marcando a cliente como atendido
-                            cliente_atendido = self.punto_seleccionado.dato.clientes.primero
-                            for n in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
-                                if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
-                                    cliente_atendido.dato.servido()
-                                    cliente_atender = Cliente(cliente_atendido.dato.dpi, cliente_atendido.dato.nombre, cliente_atendido.dato.transacciones, cliente_atendido.dato.atendido)
-                                    self.cola.agregar_final(cliente_atender)
-                                    cola_clientes.eliminar_inicio()
-                                    break
-                                else: 
-                                    cliente_atendido = cliente_atendido.siguiente
+                        #atendiendo clientes
+                        escritorio_activo = pila_escritorios_activos.primero
+                        for k in range(pila_escritorios_activos.sizeOfList()):
+                            if cola_clientes.sizeOfList() > 0:
+                                cliente_en_cola = cola_clientes.primero
                             
-                            escritorio_activo = escritorio_activo.siguiente
-                                 
-                        else:
-                            break
-                    
-                    h = self.cola.primero    
-                    for m in range(self.cola.sizeOfList()):
-                        print(h.dato.nombre)
-                        h = h.siguiente                            
+                                #marcando a cliente como atendido
+                                cliente_atendido = self.punto_seleccionado.dato.clientes.primero
+                                for n in range(self.punto_seleccionado.dato.clientes.sizeOfList()):
+                                    if cliente_atendido.dato.dpi == cliente_en_cola.dato.dato.dpi:
+                                        cliente_atendido.dato.servido()
+                                        cliente_atender = Cliente(cliente_atendido.dato.dpi, cliente_atendido.dato.nombre, cliente_atendido.dato.transacciones, cliente_atendido.dato.atendido)
+                                        self.cola.agregar_final(cliente_atender)
+                                        cola_clientes.eliminar_inicio()
+                                        break
+                                    else: 
+                                        cliente_atendido = cliente_atendido.siguiente
+                                
+                                escritorio_activo = escritorio_activo.siguiente                                  
+                            else:
+                                break
                     
                 elif opcion == 5:
-                    contador_transacciones = 0
-                    dpi_cliente = input("Ingrese el DPI del cliente: ")
-                    nombre_cliente = input("Ingrese el nombre del cliente: ")
-                    self.clearConsole()
- 
-                    lista_transacciones = Lista()
-                    transaccion = self.empresa_seleccionada.dato.transacciones.primero
-                    for i in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
-                        print(transaccion.dato.identificacion, transaccion.dato.nombre)
-                        respuesta =  (input("¿Desea agregar esta transacción a su lista de transacciones? S/N")).lower()
-                        if respuesta == "s":
-                            cantidad_transacciones = int(input("Ingrese la cantidad de transacciones de este tipo que desea realizar: "))
-                            contador_transacciones += 1
-                            nueva_transaccion = TransaccionCliente(contador_transacciones, transaccion.dato.identificacion, cantidad_transacciones)
-                            lista_transacciones.agregar_final(nueva_transaccion)
-                            transaccion = transaccion.siguiente
+                    if self.archivo == None:
+                        print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
+                    else:
+                        if self.punto_seleccionado == None:
+                            print("No ha seleccionado ningun punto de atención.")
                         else:
-                            transaccion = transaccion.siguiente
-                            
-                    nuevo_cliente = Cliente(dpi_cliente, nombre_cliente, lista_transacciones, False)
-                    self.punto_seleccionado.dato.clientes.agregar_final(nuevo_cliente)
-                    self.clearConsole()
-                    print("Solicitud de atención agregada correctamente.")
+                            contador_transacciones = 0
+                            dpi_cliente = input("Ingrese el DPI del cliente: ")
+                            nombre_cliente = input("Ingrese el nombre del cliente: ")
+                            self.clearConsole()
+        
+                            lista_transacciones = Lista()
+                            transaccion = self.empresa_seleccionada.dato.transacciones.primero
+                            for i in range(self.empresa_seleccionada.dato.transacciones.sizeOfList()):
+                                print(transaccion.dato.identificacion, transaccion.dato.nombre)
+                                respuesta =  (input("¿Desea agregar esta transacción a su lista de transacciones? S/N\n")).lower()
+                                if respuesta == "s":
+                                    cantidad_transacciones = int(input("Ingrese la cantidad de transacciones de este tipo que desea realizar: "))
+                                    contador_transacciones += 1
+                                    nueva_transaccion = TransaccionCliente(contador_transacciones, transaccion.dato.identificacion, cantidad_transacciones)
+                                    lista_transacciones.agregar_final(nueva_transaccion)
+                                    transaccion = transaccion.siguiente
+                                else:
+                                    transaccion = transaccion.siguiente
+                                    
+                            nuevo_cliente = Cliente(dpi_cliente, nombre_cliente, lista_transacciones, False)
+                            if self.punto_seleccionado.dato.clientes == None:
+                                lista_clientes = Lista()
+                                lista_clientes.agregar_final(nuevo_cliente)
+                                self.punto_seleccionado.dato.agregar_clientes(lista_clientes)
+                            else:
+                                self.punto_seleccionado.dato.clientes.agregar_final(nuevo_cliente)
+                            self.clearConsole()
+                            print("Solicitud de atención agregada correctamente.")
                 elif opcion == 6:
-                    grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios, self.punto_seleccionado.dato.clientes, self.cola)
-                    graph = grafica.generar_grafica()
-                    miArchivo = open('graphviz.dot', 'w')
-                    miArchivo.write(graph)
-                    miArchivo.close()
-                    
-                    os.system('dot -Tpng graphviz.dot -o graphviz.png')
+                    if self.archivo == None:
+                        print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
+                    elif self.archivop == None:
+                        print("No has ingresado ningún archivo de prueba.")
+                    elif self.punto_seleccionado.dato.clientes == None:
+                        print("El punto de atención seleccionado no tiene un registro de clientes.")
+                    else:
+                        grafica = GeneradorGrafica(self.empresa_seleccionada.dato.nombre, self.punto_seleccionado.dato.escritorios, self.punto_seleccionado.dato.clientes, self.cola)
+                        graph = grafica.generar_grafica()
+                        miArchivo = open('graphviz.dot', 'w')
+                        miArchivo.write(graph)
+                        miArchivo.close()
+                        
+                        os.system('dot -Tpng graphviz.dot -o graphviz.png')
+
 
             elif opcion == 4:
                 print("Has salido del sistema.")
