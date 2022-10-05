@@ -103,8 +103,8 @@ class Menu:
                     for i in range(self.archivo.listaEmpresas.sizeOfList()):
                         if self.empresa_seleccionada.dato.numero == numero:
                             break
-                    else:
-                        self.empresa_seleccionada = self.empresa_seleccionada.siguiente
+                        else:
+                            self.empresa_seleccionada = self.empresa_seleccionada.siguiente
                         
                     punto = self.empresa_seleccionada.dato.puntosAtencion.primero    
                     print(f"Puntos de atención de la empresa '{self.empresa_seleccionada.dato.nombre}': ")
@@ -322,7 +322,7 @@ class Menu:
                     if self.archivo == None:
                         print("No hay datos existentes. Verifica que hayas ingresado un archivo al sistema.")
                     elif self.archivop == None:
-                        print("No has ingresado ningún archivo de prueba.")
+                        print("No has ingresado ningún archivo de prueba.")    
                     elif self.punto_seleccionado.dato.clientes == None:
                         print("El punto de atención seleccionado no tiene un registro de clientes.")
                     else:
